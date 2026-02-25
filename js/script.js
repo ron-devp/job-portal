@@ -2,7 +2,7 @@ const sheetID = "1oVeeKWxTdGzAfZaOxmwF4oF4chAzZq8JQN4QKAVzTDk";
 const url = `https://docs.google.com/spreadsheets/d/${sheetID}/gviz/tq?tqx=out:json`;
 
 let allJobs = [];
-let visibleCount = 12; // initially show 12
+let visibleCount = 8; // initially show 12
 
 $(document).ready(function () {
 
