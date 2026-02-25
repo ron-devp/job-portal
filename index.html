@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Job Portal</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    body { font-family: Arial; background:#f4f4f4; }
+    .job-card {
+      background:white;
+      padding:15px;
+      margin:15px;
+      border-radius:8px;
+      box-shadow:0 2px 5px rgba(0,0,0,0.1);
+    }
+    .job-title { font-size:18px; font-weight:bold; }
+  </style>
+</head>
+<body>
+
+<h2>Latest Job Openings</h2>
+<div id="jobList"></div>
+
+<script>
+const sheetID = "1oVeeKWxTdGzAfZaOxmwF4oF4chAzZq8JQN4QKAVzTDk";
+const url = `https://docs.google.com/spreadsheets/d/${sheetID}/gviz/tq?tqx=out:json`;
+
+$.get(url, function(data) {
+    let json = JSON.parse(data.substring(47).slice(0, -2));
+    let rows = json.table.rows;
+
+    rows.forEach(row => {
+        let title = row.c[1]?.v || "";
+        let company = row.c[2]?.v || "";
+        let location = row.c[3]?.v || "";
+        let salary = row.c[4]?.v || "";
+        let type = row.c[5]?.v || "";
+        let desc = row.c[6]?.v || "";
+
+        $("#jobList").append(`
+          <div class="job-card">
+            <div class="job-title">${title}</div>
+            <p><b>Company:</b> ${company}</p>
+            <p><b>Location:</b> ${location}</p>
+            <p><b>Salary:</b> ${salary}</p>
+            <p><b>Type:</b> ${type}</p>
+            <p>${desc}</p>
+          </div>
+        `);
+    });
+});
+</script>
+
+</body>
+</html>
