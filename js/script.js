@@ -12,8 +12,11 @@ $(document).ready(function () {
         let rows = json.table.rows;
 
         rows.forEach(row => {
+             if (row.c[1]?.v?.trim() === "") {
+                 return;
+             }
 
-            let job = {
+        let job = {
                 slno: row.c[0]?.v || "",
                 title: row.c[1]?.v || "",
                 company: row.c[2]?.v || "",
@@ -27,6 +30,7 @@ $(document).ready(function () {
 
             job.postedDate = convertToDate(job.postedRaw);
             allJobs.push(job);
+       
         });
 
         // 🔥 Sort by latest date first
