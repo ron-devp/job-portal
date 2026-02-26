@@ -82,7 +82,6 @@ function renderJobs() {
                             ${job.apply}
                         </button>`;
         }
-        console.log(job.description);
         if(job.description && job.description.trim() !== "") {
             more = `<button class="more-btn" onclick="toggleDescription(this)">
                 More
