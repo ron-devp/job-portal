@@ -56,7 +56,7 @@ function renderJobs() {
     jobsToShow.forEach(job => {
 
         let formattedDate = formatToDDMMYYYY(job.postedDate);
-        let applyButton = "";
+        let applyButton = more = "";
 
         if (job.apply.includes("@")) {
             // If it's an email
@@ -79,6 +79,16 @@ function renderJobs() {
                             ${job.apply}
                         </button>`;
         }
+        console.log(job.description);
+        if(!job.description || job.description.trim() === "") {
+            more = `<button class="more-btn" onclick="toggleDescription(this)">
+                More
+            </button>
+
+            <div class="job-description" style="display: none;">
+                <p>${job.description}</p>
+            </div>`;
+        }
 
         $("#jobList").append( `
     <div class="job-card">
@@ -91,13 +101,7 @@ function renderJobs() {
             <p><strong>Location:</strong> ${job.location}</p>
             <p><strong>Experience:</strong> ${job.experience}</p>
             <p><strong>Posted:</strong> ${formattedDate}</p>
-            <button class="more-btn" onclick="toggleDescription(this)">
-                More
-            </button>
-
-            <div class="job-description" style="display: none;">
-                <p>${job.description}</p>
-            </div>
+            ${more}
             ${applyButton}
         </div>
     </div>
@@ -138,11 +142,11 @@ function formatToDDMMYYYY(dateObj) {
 
 function toggleDescription(button) {
 
-    const descriptionDiv = button.nextElementSibling;
+    const descriptionDiv = $(button).parent().find(".job-description");
 
-    descriptionDiv.classList.toggle("open");
+    descriptionDiv.toggleClass("open");
 
-    if (descriptionDiv.classList.contains("open")) {
+    if (descriptionDiv.hasClass("open")) {
         button.innerText = "Less";
     } else {
         button.innerText = "More";
