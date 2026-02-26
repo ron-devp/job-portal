@@ -15,6 +15,9 @@ $(document).ready(function () {
              if (row.c[1]?.v?.trim() === "") {
                  return;
              }
+             if (row.c[9]?.v?.trim() === "YES") {
+                 return;
+             }
 
         let job = {
                 slno: row.c[0]?.v || "",
@@ -41,7 +44,7 @@ $(document).ready(function () {
 
     // Load More Click
     $("#loadMore").click(function () {
-        visibleCount += 4;
+        visibleCount += 5;
         renderJobs();
     });
 
