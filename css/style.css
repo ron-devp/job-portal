@@ -127,3 +127,13 @@ body {
 .apply-btn:hover {
     background: #08306b;
 }
+
+.job-description {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.4s ease;
+}
+
+.job-description.open {
+    max-height: 500px; /* adjust if needed */
+}

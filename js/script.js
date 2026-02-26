@@ -61,12 +61,24 @@ function renderJobs() {
         if (job.apply.includes("@")) {
             // If it's an email
             applyButton = `<a href="mailto:${job.apply}" class="apply-btn">Apply Now</a>`;
+        }else  if (job.apply.includes("https://") || job.apply.includes("http://")) {
+            // If it's a URL
+            applyButton = `<a href="${job.apply}" class="apply-btn" target="_blank">Apply Now</a>`;
+        }else if (!isNaN(job.apply.replace(/\D/g, ""))) {
+
+            let cleanNumber = job.apply.replace(/\D/g, ""); // remove spaces, +, -
+
+            applyButton = `
+            <a href="tel:${cleanNumber}" class="apply-btn">
+            Call Now
+            </a>`;
+
         } else {
-    applyButton = `
-    <button class="apply-btn disabled-btn" disabled>
-        ${job.apply}
-    </button>`;
-}
+            applyButton = `
+                        <button class="apply-btn disabled-btn" disabled>
+                            ${job.apply}
+                        </button>`;
+        }
 
         $("#jobList").append( `
     <div class="job-card">
@@ -79,6 +91,13 @@ function renderJobs() {
             <p><strong>Location:</strong> ${job.location}</p>
             <p><strong>Experience:</strong> ${job.experience}</p>
             <p><strong>Posted:</strong> ${formattedDate}</p>
+            <button class="more-btn" onclick="toggleDescription(this)">
+                More
+            </button>
+
+            <div class="job-description" style="display: none;">
+                <p>${job.description}</p>
+            </div>
             ${applyButton}
         </div>
     </div>
@@ -115,4 +134,17 @@ function formatToDDMMYYYY(dateObj) {
     let month = String(dateObj.getMonth() + 1).padStart(2, '0');
     let year = dateObj.getFullYear();
     return `${day}/${month}/${year}`;
+}
+
+function toggleDescription(button) {
+
+    const descriptionDiv = button.nextElementSibling;
+
+    descriptionDiv.classList.toggle("open");
+
+    if (descriptionDiv.classList.contains("open")) {
+        button.innerText = "Less";
+    } else {
+        button.innerText = "More";
+    }
 }
