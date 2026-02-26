@@ -137,3 +137,24 @@ body {
 .job-description.open {
     max-height: 500px; /* adjust if needed */
 }
+
+.more-btn {
+    background-color: #1e293b;
+    color: #ffffff;
+    border: none;
+    padding: 8px 16px;
+    margin-top: 10px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.more-btn:hover {
+    background-color: #334155;
+}
+
+.more-btn:active {
+    transform: scale(0.97);
+}

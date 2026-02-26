@@ -80,7 +80,7 @@ function renderJobs() {
                         </button>`;
         }
         console.log(job.description);
-        if(!job.description || job.description.trim() === "") {
+        if(job.description && job.description.trim() !== "") {
             more = `<button class="more-btn" onclick="toggleDescription(this)">
                 More
             </button>
@@ -148,7 +148,9 @@ function toggleDescription(button) {
 
     if (descriptionDiv.hasClass("open")) {
         button.innerText = "Less";
+        $(button).css("display", "block");
     } else {
         button.innerText = "More";
+        $(button).css("display", "none");
     }
 }
