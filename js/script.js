@@ -148,9 +148,9 @@ function toggleDescription(button) {
 
     if (descriptionDiv.hasClass("open")) {
         button.innerText = "Less";
-        $(button).css("display", "block");
+        $(descriptionDiv).css("display", "block");
     } else {
         button.innerText = "More";
-        $(button).css("display", "none");
+        $(descriptionDiv).css("display", "none");
     }
 }
