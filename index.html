@@ -19,23 +19,23 @@
     <link rel="stylesheet" href="css/style.css">
     <script src="js/jquery-3.6.0.min.js"></script>
 </head>
-
 <body>
 
 <header class="main-header">
-    <div class="nav-container">
+  <div class="nav-container">
+    <div class="logo">Ericad Youth Job Portal</div>
 
-        <div class="logo">
-            Ericad Youth Job Portal
-        </div>
-
-        <nav class="nav-links">
-            <a href="#jobList">Jobs</a>
-            <a href="#info">Info</a>
-            <a href="#about">About</a>
-        </nav>
-
+    <!-- Hamburger Icon -->
+    <div class="menu-toggle" id="menu-toggle">
+      ☰
     </div>
+
+    <div class="nav-links" id="nav-links">
+      <a href="#jobs">Jobs</a>
+      <a href="#about">About</a>
+      <a href="#info">Info</a>
+    </div>
+  </div>
 </header>
 
     <!-- Banner Section -->
@@ -121,7 +121,14 @@
 
     <!-- JS -->
     <script src="js/script.js"></script>
+    <script>
+  const toggle = document.getElementById("menu-toggle");
+  const navLinks = document.getElementById("nav-links");
 
+  toggle.addEventListener("click", () => {
+    navLinks.classList.toggle("active");
+  });
+</script>
 </body>
 
 </html>

@@ -317,3 +317,47 @@ body {
 .nav-links a:hover {
     color: #ffffff;
 }
+
+/* Hide hamburger on desktop */
+.menu-toggle {
+    display: none;
+    font-size: 26px;
+    color: white;
+    cursor: pointer;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-container {
+        flex-direction: row;
+    }
+
+    .nav-links {
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background: #0c1e3a;
+        width: 200px;
+        display: none;
+        flex-direction: column;
+        text-align: left;
+        padding: 15px;
+        border-radius: 8px;
+    }
+
+    .nav-links a {
+        margin: 10px 0;
+        display: block;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+
+}

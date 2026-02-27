@@ -88,7 +88,7 @@ function renderJobs() {
             </button>
 
             <div class="job-description" style="display: none;">
-                <p>${job.description}</p>
+                <p><pre>${job.description}</pre></p>
             </div>`;
         }
 
