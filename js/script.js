@@ -28,7 +28,8 @@ $(document).ready(function () {
                 apply: row.c[5]?.v || "",
                 postedRaw: row.c[6]?.v || "",
                 sent: row.c[7]?.v || "",
-                description: row.c[8]?.v || ""
+                description: row.c[8]?.v || "",
+                status: row.c[10]?.v || ""
             };
 
             job.postedDate = convertToDate(job.postedRaw);
@@ -92,10 +93,28 @@ function renderJobs() {
             </div>`;
         }
 
+        let statusClass = '';
+        let statusText = job.status; // assuming you fetch status from sheet
+
+        if (statusText === 'Latest') {
+            statusClass = 'status-latest';
+        } else if (statusText === 'Recent') {
+            statusClass = 'status-recent';
+        } else if (statusText === 'Closing Soon') {
+            statusClass = 'status-closing';
+        } else if (statusText === 'Final Days') {
+            statusClass = 'status-final';
+        }
+
         $("#jobList").append( `
     <div class="job-card">
         <div class="card-header">
-            ${job.title}
+            <div class="title-row">
+                <span class="job-title">${jobTitle}</span>
+                <span class="status-badge ${statusClass}">
+                    ${statusText}
+                </span>
+            </div>
         </div>
 
         <div class="card-body">

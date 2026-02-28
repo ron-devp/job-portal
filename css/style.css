@@ -140,6 +140,17 @@ body {
 
 .job-description.open {
     max-height: 500px; /* adjust if needed */
+    overflow-y: auto;       /* enables vertical scroll */
+    padding-right: 8px;     /* space for scrollbar */
+    margin-top: 10px;
+}
+
+/* Preserve formatting but allow wrapping */
+.job-description pre {
+    white-space: pre-wrap;   /* keeps formatting but wraps */
+    word-break: break-word;
+    margin: 0;
+    font-family: inherit;
 }
 
 .more-btn {
@@ -360,4 +371,46 @@ body {
     }
 
 
+}
+
+/* Title Row Layout */
+.title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Job Title */
+.job-title {
+    font-size: 18px;
+    font-weight: 600;
+    flex: 1;
+}
+
+/* Status Badge Base */
+.status-badge {
+    padding: 4px 10px;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 20px;
+    color: #fff;
+    white-space: nowrap;
+}
+
+/* Status Colors */
+.status-latest {
+    background-color: #16a34a; /* Green */
+}
+
+.status-recent {
+    background-color: #2563eb; /* Blue */
+}
+
+.status-closing {
+    background-color: #f59e0b; /* Orange */
+}
+
+.status-final {
+    background-color: #dc2626; /* Red */
 }
