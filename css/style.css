@@ -415,3 +415,35 @@ body {
 .status-final {
     background-color: #dc2626; /* Red */
 }
+
+.status-guide {
+    margin-top: 40px;
+    text-align: left;
+    background: rgba(255,255,255,0.08);
+    padding: 25px;
+    border-radius: 10px;
+}
+
+.status-guide h3 {
+    margin-bottom: 15px;
+    font-size: 20px;
+    color: #ffffff;
+}
+
+.status-list {
+    list-style: none;
+    padding: 0;
+    margin: 15px 0;
+}
+
+.status-list li {
+    margin-bottom: 12px;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.status-note {
+    margin-top: 15px;
+    font-size: 14px;
+    color: #e2e8f0;
+}
