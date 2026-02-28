@@ -110,7 +110,7 @@ function renderJobs() {
     <div class="job-card">
         <div class="card-header">
             <div class="title-row">
-                <span class="job-title">${jobTitle}</span>
+                <span class="job-title">${job.title}</span>
                 <span class="status-badge ${statusClass}">
                     ${statusText}
                 </span>
